@@ -1,0 +1,7 @@
+{
+    "variants": {
+        "": {
+            "model": "moreblox:block/brix_block"
+        }
+    }
+}

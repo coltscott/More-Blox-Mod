@@ -19,7 +19,7 @@ public class MoreBlox implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger("moreblox");
     
     public static final Item BRIX = new Item(new Item.Settings().group(ItemGroup.MATERIALS));
-	public static final Block BRIX_BLOCK = new Block(FabricBlockSettings.of(Material.STONE).strength(1.5f));
+	public static final Block BRIX_BLOCK = new Block(FabricBlockSettings.of(Material.STONE).strength(0.75f));
 
 	@Override
 	public void onInitialize() {

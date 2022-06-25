@@ -9,7 +9,6 @@ import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.util.Identifier;
-
 import net.minecraft.util.registry.Registry;
 
 import org.slf4j.Logger;
@@ -19,15 +18,23 @@ public class MoreBlox implements ModInitializer {
 	public static final Logger LOGGER = LoggerFactory.getLogger("moreblox");
     
     public static final Item BRIX = new Item(new Item.Settings().group(ItemGroup.MATERIALS));
-	public static final Block BRIX_BLOCK = new Block(FabricBlockSettings.of(Material.STONE).strength(0.75f));
+	public static final Block BRIX_BLOCK = new Block(FabricBlockSettings.of(Material.METAL)
+		.strength(0.2f));
 
 	@Override
 	public void onInitialize() {
 		//Registers the brix item that will be able to be crafted into its latter Brix block
+		
 		Registry.register(Registry.ITEM, new Identifier("moreblox", "brix"), BRIX);
+		//Brix block registry
+
 		Registry.register(Registry.BLOCK, new Identifier("moreblox", "brix_block"), BRIX_BLOCK);
 		Registry.register(Registry.ITEM, new Identifier("moreblox", "brix_block"), new BlockItem(BRIX_BLOCK, new FabricItemSettings().group(ItemGroup.MATERIALS)));
-		
+		//Dark clay registry
+
+		//Registry.register(Registry.BLOCK, new Identifier("moreblox", "dark_clay"), DARK_CLAY);
+
+
 		LOGGER.info("More Blox launched");
 	}
 }

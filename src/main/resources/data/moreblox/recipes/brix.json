@@ -1,0 +1,9 @@
+{
+    "type": "minecraft:smelting",
+    "ingredient": {
+        "item": "moreblox:dark_clay"
+    },
+    "result": "moreblox:brix",
+    "experience": 0.3,
+    "cookingtime": 200
+}

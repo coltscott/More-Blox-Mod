@@ -1,5 +1,6 @@
 {
     "block.moreblox.brix_block": "Brix Block",
-    "item.moreblox.brix": "Brix"
-    
+    "item.moreblox.brix": "Brix",
+    "block.moreblox.dark_clay": "Dark Clay",
+    "item.moreblox.dark_clay_ball": "Dark Clay Ball"
 }

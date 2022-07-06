@@ -1,36 +1,22 @@
 package plausibleplant.more.blox;
 
-import javax.xml.catalog.CatalogFeatures.Feature;
+import java.util.List;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
-import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
-import net.minecraft.block.Block;
-import net.minecraft.block.Material;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
-import net.minecraft.sound.BlockSoundGroup;
-import net.minecraft.util.Identifier;
-import net.minecraft.util.registry.Registry;
+import net.minecraft.util.registry.RegistryEntry;
 import net.minecraft.world.gen.feature.ConfiguredFeature;
+import net.minecraft.world.gen.feature.ConfiguredFeatures;
+import net.minecraft.world.gen.feature.Feature;
 import net.minecraft.world.gen.feature.OreConfiguredFeatures;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
+import plausibleplant.more.blox.block.ModBlocks;
+import plausibleplant.more.blox.item.ModItems;
 
 public class MoreBlox implements ModInitializer {
-    
-    public static final Item BRIX = new Item(new Item.Settings().group(ItemGroup.MATERIALS));
-
-	public static final Block BRIX_BLOCK = new Block(FabricBlockSettings.of(Material.STONE)
-		.strength(2.0f, 6.0f)
-		.sounds(BlockSoundGroup.NETHER_BRICKS)
-		.requiresTool());
-
-	public static final Block DARK_CLAY = new Block(FabricBlockSettings.of(Material.SOIL)
-		.strength(0.6f)
-		.sounds(BlockSoundGroup.GRAVEL));
-
-	public static final Item DARK_CLAY_BALL = new Item(new Item.Settings().group(ItemGroup.MATERIALS));
+    public static final Logger LOGGER = LoggerFactory.getLogger("Moreblox");
 
 	/*private static ConfiguredFeature<?, ?> DARK_CLAY_OVERWORLD = 
 		new ConfiguredFeature(Feature.ORE,
@@ -39,19 +25,19 @@ public class MoreBlox implements ModInitializer {
 		12));
 	*/
 
+	public static final List<OreFeatureConfig.Target> DARK_CLAY_OVERWORLD = List.of(
+		OreFeatureConfig.createTarget(OreConfiguredFeatures.STONE_ORE_REPLACEABLES,
+		ModBlocks.DARK_CLAY.getDefaultState()));
+
+	public static final RegistryEntry<ConfiguredFeature<OreFeatureConfig, ?>> DARK_CLAY_SPAWN =
+		ConfiguredFeatures.register("dark_clay", Feature.ORE, new OreFeatureConfig(DARK_CLAY_OVERWORLD, 12));
+	
+
 	@Override
 	public void onInitialize() {
-		Registry.register(Registry.ITEM, new Identifier("moreblox", "brix"), BRIX);
+		ModItems.registerModItems();
 
-		Registry.register(Registry.BLOCK, new Identifier("moreblox", "brix_block"), BRIX_BLOCK);
-
-		Registry.register(Registry.ITEM, new Identifier("moreblox", "brix_block"), new BlockItem(BRIX_BLOCK, new FabricItemSettings().group(ItemGroup.BUILDING_BLOCKS)));
-
-		Registry.register(Registry.BLOCK, new Identifier("moreblox", "dark_clay"), DARK_CLAY);
-
-		Registry.register(Registry.ITEM, new Identifier("moreblox", "dark_clay"), new BlockItem(DARK_CLAY, new FabricItemSettings().group(ItemGroup.MATERIALS)));
-		
-		Registry.register(Registry.ITEM, new Identifier("moreblox", "dark_clay_ball"), DARK_CLAY_BALL);
+		ModBlocks.registerModBlocks();
 
 	}
 }

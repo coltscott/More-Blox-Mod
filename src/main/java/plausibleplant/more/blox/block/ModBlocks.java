@@ -1,9 +1,11 @@
 package plausibleplant.more.blox.block;
 
+import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.item.v1.FabricItemSettings;
 import net.fabricmc.fabric.api.object.builder.v1.block.FabricBlockSettings;
 import net.minecraft.block.Block;
 import net.minecraft.block.Material;
+import net.minecraft.client.render.RenderLayer;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
@@ -24,8 +26,23 @@ public class ModBlocks {
         .sounds(BlockSoundGroup.GRAVEL)),
         ItemGroup.MATERIALS);
 
+    public static final Block WISTERIA_LEAVES = registerBlockTransparent("wisteria_leaves", new Block(FabricBlockSettings.of(Material.LEAVES)
+        .strength(0.2f)
+        .sounds(BlockSoundGroup.VINE)
+        .luminance(10)
+        .nonOpaque()),
+        ItemGroup.DECORATIONS);
+
     private static Block registerBlock(String name, Block block, ItemGroup tab)  {
         registerBlockItem(name, block, tab);
+        return Registry.register(Registry.BLOCK,
+            new Identifier("moreblox",
+            name), block);
+    }
+
+    private static Block registerBlockTransparent(String name, Block block, ItemGroup tab)  {
+        registerBlockItem(name, block, tab);
+        BlockRenderLayerMap.INSTANCE.putBlock(block, RenderLayer.getCutout());
         return Registry.register(Registry.BLOCK,
             new Identifier("moreblox",
             name), block);

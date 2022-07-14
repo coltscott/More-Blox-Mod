@@ -1,0 +1,6 @@
+{
+    "parent": "minecraft:block/cross",
+    "textures": {
+        "cross": "moreblox:block/wisteria_tree_sapling"
+    }
+}

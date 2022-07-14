@@ -6,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import net.fabricmc.api.ModInitializer;
 import plausibleplant.more.blox.block.ModBlocks;
 import plausibleplant.more.blox.item.ModItems;
+import plausibleplant.more.blox.util.ModRegistries;
 import plausibleplant.more.blox.world.feature.gen.ModWorldGen;
 
 public class MoreBlox implements ModInitializer {
@@ -17,6 +18,6 @@ public class MoreBlox implements ModInitializer {
 		ModBlocks.registerModBlocks();
 
 		ModWorldGen.generateModWorldGen();
-
+		ModRegistries.registerModUtil();
 	}
 }

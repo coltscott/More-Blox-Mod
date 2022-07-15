@@ -1,0 +1,7 @@
+{
+    "parent": "minecraft:block/cube_column",
+    "textures": {
+      "end": "moreblox:block/stripped_wisteria_log",
+      "side": "moreblox:block/stripped_wisteria_log"
+    }
+  }

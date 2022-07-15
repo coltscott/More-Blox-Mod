@@ -7,6 +7,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeavesBlock;
 import net.minecraft.block.Material;
+import net.minecraft.block.PillarBlock;
 import net.minecraft.block.sapling.SaplingGenerator;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.item.BlockItem;
@@ -39,6 +40,36 @@ public class ModBlocks {
         ItemGroup.DECORATIONS);
 
     public static final Block WISTERIA_TREE_SAPLING = registerBlockTransparent("wisteria_tree_sapling", new ModSaplingBlock(new ModSaplingGenerator(), FabricBlockSettings.copy(Blocks.OAK_SAPLING)), ItemGroup.DECORATIONS);
+
+    public static final Block WISTERIA_LOG = registerBlock("wisteria_log", new PillarBlock(FabricBlockSettings.of(Material.WOOD)
+        .strength(2.0f)
+        .sounds(BlockSoundGroup.WOOD)
+        .requiresTool()),
+        ItemGroup.BUILDING_BLOCKS);
+
+    public static final Block WISTERIA_WOOD = registerBlock("wisteria_wood", new PillarBlock(FabricBlockSettings.of(Material.WOOD)
+        .strength(2.0f)
+        .sounds(BlockSoundGroup.WOOD)
+        .requiresTool()),
+        ItemGroup.BUILDING_BLOCKS);
+
+        public static final Block STRIPPED_WISTERIA_LOG = registerBlock("stripped_wisteria_log", new PillarBlock(FabricBlockSettings.of(Material.WOOD)
+        .strength(2.0f)
+        .sounds(BlockSoundGroup.WOOD)
+        .requiresTool()),
+        ItemGroup.BUILDING_BLOCKS);
+
+    public static final Block STRIPPED_WISTERIA_WOOD = registerBlock("stripped_wisteria_wood", new PillarBlock(FabricBlockSettings.of(Material.WOOD)
+        .strength(2.0f)
+        .sounds(BlockSoundGroup.WOOD)
+        .requiresTool()),
+        ItemGroup.BUILDING_BLOCKS);
+
+    public static final Block WISTERIA_PLANKS = registerBlock("wisteria_planks", new Block(FabricBlockSettings.of(Material.WOOD)
+        .strength(2.0f)
+        .sounds(BlockSoundGroup.WOOD)
+        .requiresTool()),
+        ItemGroup.BUILDING_BLOCKS);
 
     private static Block registerBlock(String name, Block block, ItemGroup tab)  {
         registerBlockItem(name, block, tab);
